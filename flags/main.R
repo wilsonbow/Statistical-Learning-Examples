@@ -1,14 +1,44 @@
-% Flags data - PCA analysis
+# Flags data - PCA analysis
+
+rm(list=ls())
 
 data = read.csv("./data/flags.csv", header = F)
-headers = c("Country", "Landmass", "Zone", "Area",
+headers = c("Country", "Continent", "Zone", "Area",
             "Population", "Language", "Religion",
             "Bars", "Stripes", "Colours", "Red",
             "Green", "Blue", "Gold", "White",
             "Black", "Orange", "Main Hue", "Circles",
             "Crosses", "Saltires", "Quarters",
             "Sun/Stars", "Crescent", "Triangle",
-            "Icon", "Animate", "Text", "Top-left",
-            "Bottom right")
+            "Icon", "Animate", "Text", "Top.left",
+            "Bottom.right")
 names(data) = headers
+
+# Rename the continents with factors
+continents = c("North America", "South America",
+               "Euroupe", "Africa", "Asia",
+               "Oceania")
+data$Continent = factor(data$Continent, labels = continents)
+rm(ls=continents)
+
+# Rename the zones with factors
+zones = c("NE", "SE", "SW", "NW")
+data$Zone = factor(data$Zone, labels = zones)
+rm(ls=zones)
+
+# Rename the languages with factors
+languages = c("English", "Spanish", "French", "German",
+              "Slavic", "Other Indo-European",
+              "Chinese", "Arabic",
+              "Japanese/Turkish/Finnish/Magyar",
+              "Others")
+data$Language = factor(data$Language, labels = languages)
+rm(ls=languages)
+
+# Rename the religions with factors
+religions = c("Catholic", "Other Christian",
+              "Muslim", "Buddhist", "Hindu",
+              "Ethnic", "Marxist", "Others")
+data$Religion = factor(data$Religion, labels = religions)
+rm(ls=religions)
 
