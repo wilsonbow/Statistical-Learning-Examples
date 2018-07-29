@@ -42,3 +42,9 @@ religions = c("Catholic", "Other Christian",
 data$Religion = factor(data$Religion, labels = religions)
 rm(ls=religions)
 
+pca.columns = c(4, 5, 8, 9, 10, 11, 12, 13, 14, 15,
+                16, 17, 19, 20, 21, 22, 23, 24,
+                25, 26, 27, 28)
+pca = prcomp(data[,pca.columns], center = T, scale = T)
+
+
