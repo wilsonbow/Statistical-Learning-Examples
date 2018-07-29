@@ -42,9 +42,16 @@ religions = c("Catholic", "Other Christian",
 data$Religion = factor(data$Religion, labels = religions)
 rm(ls=religions)
 
+# Perform PCA
 pca.columns = c(4, 5, 8, 9, 10, 11, 12, 13, 14, 15,
                 16, 17, 19, 20, 21, 22, 23, 24,
                 25, 26, 27, 28)
 pca = prcomp(data[,pca.columns], center = T, scale = T)
 
+# Produce Scree plot
+pca.summary = summary(pca)
+plot(pca.summary$importance[2,], las=1, type="b",
+     col="blue", xlab="PCA",
+     ylab="Proportion of variance",
+     main="Scree plot of flag PCA")
 
