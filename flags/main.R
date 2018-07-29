@@ -1,6 +1,7 @@
 # Flags data - PCA analysis
 
 rm(list=ls())
+library(calibrate)
 
 data = read.csv("./data/flags.csv", header = F)
 headers = c("Country", "Continent", "Zone", "Area",
@@ -55,3 +56,11 @@ plot(pca.summary$importance[2,], las=1, type="b",
      ylab="Proportion of variance",
      main="Scree plot of flag PCA")
 
+# Plot PC1 vs PC2
+plot(pca$x[,2]~pca$x[,1], col="red", las=1,
+     xlab="PCA1", ylab="PCA2")
+
+arrows(0, 0, x1=(8*pca$rotation[,1]), y1=(8*pca$rotation[,2]),
+       length = 0.1, col="blue")
+textxy(8*pca$rotation[,1], 8*pca$rotation[,2],
+       labs = rownames(pca$rotation))
