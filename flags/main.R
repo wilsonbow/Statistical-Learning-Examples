@@ -64,3 +64,23 @@ arrows(0, 0, x1=(8*pca$rotation[,1]), y1=(8*pca$rotation[,2]),
        length = 0.1, col="blue")
 textxy(8*pca$rotation[,1], 8*pca$rotation[,2],
        labs = rownames(pca$rotation))
+
+# Plot PC1 vs PC3
+plot(pca$x[,2]~pca$x[,1], col="red", las=1,
+     xlab="PCA1", ylab="PCA3")
+
+k = 4
+arrows(0, 0, x1=(k*pca$rotation[,1]), y1=(k*pca$rotation[,3]),
+       length = 0.1, col="blue")
+textxy(k*pca$rotation[,1], k*pca$rotation[,3],
+       labs = rownames(pca$rotation))
+
+# Plot PC2 vs PC3
+plot(pca$x[,2]~pca$x[,1], col="red", las=1,
+     xlab="PCA2", ylab="PCA3")
+
+k = 5
+arrows(0, 0, x1=(k*pca$rotation[,2]), y1=(k*pca$rotation[,3]),
+       length = 0.1, col="blue")
+textxy(k*pca$rotation[,2], k*pca$rotation[,3],
+       labs = rownames(pca$rotation))
